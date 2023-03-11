@@ -9,4 +9,4 @@ This will spin up the development container and we will get the devspace prompt 
     
 This builds the application inside the container and monitors for changes. Any code change synced by devspace will trigger a dotnet rebuild. You can refresh the browser to see the changes.
 
-[Next: About the docker images used](docs/04%20-%20About%20the%20docker%20images.md)
+[Next: About the docker images used](/docs/04%20-%20About-the-docker-images.md)
