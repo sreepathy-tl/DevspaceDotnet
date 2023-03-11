@@ -11,3 +11,5 @@ I have
 - A local registry setup. It is a one time requirement. 
     Create it using the command:
     `devspace run setup-registry`
+
+[Next: Introduction](/docs/01%20-%20intro.md) 
