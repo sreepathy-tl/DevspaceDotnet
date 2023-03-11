@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: fs-dotnet-entry
+    namespace: {{ .Release.Namespace | quote }}
+data:
+  entry_point.sh: |
+    #!/bin/sh
+    echo "Running your entrypoint script"
+    dotnet restore
+    dotnet watch run --project /source/aspnetapp.csproj   --self-contained false --no-restore --urls=http://0.0.0.0:5000/

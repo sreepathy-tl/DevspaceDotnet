@@ -1,0 +1,28 @@
+# Default values for bazaar.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+environment:
+# Supported values for env: local-dev, dev, integ, stage, prod 
+  env: "dev"
+  localDev: True
+
+registries:
+  localRegistry: localhost:8432
+  devRegistry: ""
+  prodRegistryOverride: ""
+
+fsdotnet:
+  ports:
+    httpPort:
+      servicePort: 8000
+      targetPort: 5000
+  deploymentSpec:
+    replicas: 1
+  images:
+    registry: 193266966053.dkr.ecr.ap-southeast-2.amazonaws.com
+    repository: fs-dotnet
+    tag: "v1"
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []

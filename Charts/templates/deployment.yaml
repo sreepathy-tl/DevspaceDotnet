@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{include "common.fullname" $ }}-deployment
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{ include "common.labels" $ }}
+spec:
+  replicas: {{.Values.fsdotnet.deploymentSpec.replicas}}
+  selector:
+    matchLabels:
+      {{ include "common.labels" $ }}
+  template:
+    metadata:
+      labels:
+        {{ include "common.labels" $ }}
+    spec:
+      containers:
+      - name: fsdotnet
+        image: {{ include "common.image" ( dict "imageRoot" .Values.fsdotnet.images "registries" .Values.registries "environment" .Values.environment ) }}
+        command: ["/source/entry_point.sh"]
+        envFrom:
+        - configMapRef:
+            name: fs-dotnet-env-conf
+        ports:
+        - containerPort: {{.Values.fsdotnet.ports.httpPort.targetPort}}
+        volumeMounts:
+        - name: entry-volume
+          mountPath: /source/entry_point.sh
+          subPath: entry_point.sh
+      volumes:
+      - name: entry-volume
+        configMap:
+          name: fs-dotnet-entry
+          defaultMode: 0555
+
+

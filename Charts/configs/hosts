@@ -1,0 +1,8 @@
+192.168.56.128      devtest-dash.localdev
+192.168.56.128      devtest-self.localdev
+192.168.56.128      devtest-ss.localdev
+192.168.56.128      devtest.localdev
+192.168.56.128      devtest-asui.localdev
+192.168.56.128      devtest-forms.localdev
+127.0.0.1           devtest-ci.localdev
+192.168.56.128      devtest-intauth.localdev
